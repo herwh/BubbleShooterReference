@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Data;
 using UnityEngine;
 
 public class GridBuilder : MonoBehaviour
@@ -7,10 +7,10 @@ public class GridBuilder : MonoBehaviour
     [SerializeField] private int _rows;
     [SerializeField] private int _columns;
     [SerializeField] private int _bubbleSkipProbability;
-    [SerializeField] private List<Color> _colors;
+    [SerializeField] private BubbleData _bubbleData;
 
     private float _halfBubbleWidth;
-    private readonly BubbleGrid _bubbleGrid = new BubbleGrid();
+    private readonly BubbleGrid _bubbleGrid = new();
 
     private void Start()
     {
@@ -51,6 +51,7 @@ public class GridBuilder : MonoBehaviour
                 }
 
                 var position = startPosition + startOffset + new Vector3(bubbleSize.x * column, -bubbleSize.y * row, 0);
+
                 CreateBubble(position, column, row);
             }
         }
@@ -59,16 +60,10 @@ public class GridBuilder : MonoBehaviour
     private void CreateBubble(Vector3 position, int column, int row)
     {
         var newBubble = Instantiate(_bubble, position, Quaternion.identity);
-        newBubble.SetColor(GetRandomColor());
+        newBubble.SetColor(_bubbleData.GetRandomColor());
         _bubbleGrid.AddBubble(row, column, newBubble);
     }
-
-    private Color GetRandomColor()
-    {
-        var randomIndex = Random.Range(0, _colors.Count);
-        return _colors[randomIndex];
-    }
-
+    
     private bool SkipBubble()
     {
         return Random.Range(0, 100) < _bubbleSkipProbability;
