@@ -29,6 +29,8 @@ public class ShootBubbleSpawner : MonoBehaviour
     {
         _currentBubble = Instantiate(_bubble, _spawnPosition.position, Quaternion.identity);
         _currentBubble.SetColor(_bubbleData.GetRandomColor());
+        BubbleWallReflector bubbleWallReflector = _currentBubble.gameObject.AddComponent<BubbleWallReflector>();
+        bubbleWallReflector.SetBubble(_currentBubble);
     }
 
     private IEnumerator SpawnNewShootBubble()

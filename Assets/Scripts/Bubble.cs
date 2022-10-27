@@ -3,8 +3,10 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    public Vector3 Direction { get; set; }
+    
     private bool _isMoving;
-    private Vector3 _direction;
     private float _throwForce;
 
     public Vector3 GetSize()
@@ -20,7 +22,7 @@ public class Bubble : MonoBehaviour
     public void MoveOnDirection(Vector3 direction, float throwForce)
     {
         _isMoving = true;
-        _direction = direction;
+        Direction = direction;
         _throwForce = throwForce;
     }
 
@@ -33,7 +35,7 @@ public class Bubble : MonoBehaviour
     {
         if (_isMoving)
         {
-            transform.position += _throwForce * _direction * Time.deltaTime;
+            transform.position += _throwForce * Direction * Time.deltaTime;
         }
     }
 }
