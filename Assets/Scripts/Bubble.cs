@@ -5,7 +5,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     public Vector3 Direction { get; set; }
-    
+
     private bool _isMoving;
     private float _throwForce;
 
@@ -36,6 +36,15 @@ public class Bubble : MonoBehaviour
         if (_isMoving)
         {
             transform.position += _throwForce * Direction * Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (gameObject.layer == 7)
+        {
+            _isMoving = false;
+            var (row, column) = GridHelper.GetBubbleIndex(transform.position, GetSize());
         }
     }
 }

@@ -6,6 +6,7 @@ public class GridBuilder : MonoBehaviour
     [SerializeField] private Bubble _bubble;
     [SerializeField] private int _rows;
     [SerializeField] private int _columns;
+    [SerializeField] private int _maxRows;
     [SerializeField] private int _bubbleSkipProbability;
     [SerializeField] private BubbleData _bubbleData;
 
@@ -14,7 +15,7 @@ public class GridBuilder : MonoBehaviour
 
     private void Start()
     {
-        _bubbleGrid.SetSize(_rows, _columns);
+        _bubbleGrid.SetSize(_maxRows, _columns);
         Build();
     }
 
@@ -42,12 +43,12 @@ public class GridBuilder : MonoBehaviour
 
                 if (row % 2 != 0)
                 {
-                    startOffset.x = halfBubbleWidth;
+                    // startOffset.x = halfBubbleWidth;
                 }
 
                 if (row != 0)
                 {
-                    startOffset.y = bubbleSize.y * 0.125f * row;
+                    // startOffset.y = bubbleSize.y * 0.125f * row;
                 }
 
                 var position = startPosition + startOffset + new Vector3(bubbleSize.x * column, -bubbleSize.y * row, 0);
