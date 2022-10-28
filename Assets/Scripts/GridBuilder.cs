@@ -9,14 +9,17 @@ public class GridBuilder : MonoBehaviour
     [SerializeField] private int _maxRows;
     [SerializeField] private int _bubbleSkipProbability;
     [SerializeField] private BubbleData _bubbleData;
+    [SerializeField] private int _bubbleClusterFactor;
+
+    public BubbleGrid BubbleGrid => _bubbleGrid;
 
     private float _halfBubbleWidth;
     private readonly BubbleGrid _bubbleGrid = new();
-    public BubbleGrid BubbleGrid => _bubbleGrid;
-    
+
     private void Awake()
     {
         _bubbleGrid.SetSize(_maxRows, _columns);
+        _bubbleGrid.SetClusterFactor(_bubbleClusterFactor);
         Build();
     }
 
@@ -57,10 +60,10 @@ public class GridBuilder : MonoBehaviour
     private void CreateBubble(Vector3 position, int column, int row)
     {
         var newBubble = Instantiate(_bubble, position, Quaternion.identity);
-        newBubble.SetColor(_bubbleData.GetRandomColor());
+        newBubble.Color = _bubbleData.GetRandomColor();
         _bubbleGrid.AddBubble(row, column, newBubble);
     }
-    
+
     private bool SkipBubble()
     {
         return Random.Range(0, 100) < _bubbleSkipProbability;

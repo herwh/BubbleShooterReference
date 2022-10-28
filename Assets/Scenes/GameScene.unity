@@ -301,9 +301,10 @@ MonoBehaviour:
   _bubble: {fileID: 3606734657574507646, guid: 60dad16f1bc2b1a4cab258bce081a73f, type: 3}
   _rows: 12
   _columns: 12
-  _maxRows: 25
+  _maxRows: 30
   _bubbleSkipProbability: 30
   _bubbleData: {fileID: 11400000, guid: 1cfb50c95f39b24469ab1741f1cd6b66, type: 2}
+  _bubbleClusterFactor: 3
 --- !u!1 &1671312827 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4937670180939556264, guid: da97fb893f3d4ac498c3df71d7e9b445, type: 3}

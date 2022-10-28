@@ -4,6 +4,15 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    public int Row { get; set; }
+    public int Column { get; set; }
+    
+    public Color Color
+    {
+        get => _spriteRenderer.color;
+        set => _spriteRenderer.color = value;
+    }
     
     public Vector3 Direction { get; set; }
     public event Action<Bubble,int, int, Color> OnCollision;
@@ -14,11 +23,6 @@ public class Bubble : MonoBehaviour
     public Vector3 GetSize()
     {
         return _spriteRenderer.bounds.size * ScreenSize.GetScreenCorrelation();
-    }
-
-    public void SetColor(Color color)
-    {
-        _spriteRenderer.color = color;
     }
 
     public void MoveOnDirection(Vector3 direction, float throwForce)
