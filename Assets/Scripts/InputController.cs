@@ -9,19 +9,32 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
+#if UNITY_EDITOR
+       if (EventSystem.current.IsPointerOverGameObject())
+       {
+           return;
+       } 
+#else
+       foreach (Touch touch in Input.touches)
+       {
+           int id = touch.fingerId;
+           if (EventSystem.current.IsPointerOverGameObject(id))
+           {
+               return;
+           }
+       }
+#endif
+        
+        if (Input.GetMouseButton(0))
         {
-            if (Input.GetMouseButton(0))
-            {
-                RotateArrow();
-            }
+            RotateArrow();
+        }
 
-            if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (_shootBubbleSpawner.HasBubble)
             {
-                if (_shootBubbleSpawner.HasBubble)
-                {
-                    ThrowBubble(_shootBubbleSpawner.PopBubble());
-                }
+                ThrowBubble(_shootBubbleSpawner.PopBubble());
             }
         }
     }
@@ -40,7 +53,7 @@ public class InputController : MonoBehaviour
             zAngle -= 360;
         }
 
-        var rotationLimit = Mathf.Clamp(zAngle, -90f, 90f);
+        var rotationLimit = Mathf.Clamp(zAngle, -80f, 80f);
         _arrow.transform.rotation = Quaternion.Euler(0, 0, rotationLimit);
     }
 
