@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
-
+    
     public Vector3 Direction { get; set; }
-
+    public event Action<Bubble,int, int, Color> OnCollision;
+        
     private bool _isMoving;
     private float _throwForce;
 
@@ -45,6 +47,10 @@ public class Bubble : MonoBehaviour
         {
             _isMoving = false;
             var (row, column) = GridHelper.GetBubbleIndex(transform.position, GetSize());
+            transform.position = GridHelper.GetCorrectBubblePosition(row, column, GetSize());
+
+            OnCollision?.Invoke(this, row, column, _spriteRenderer.color);
+            OnCollision = null;
         }
     }
 }

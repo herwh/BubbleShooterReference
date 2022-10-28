@@ -12,8 +12,9 @@ public class GridBuilder : MonoBehaviour
 
     private float _halfBubbleWidth;
     private readonly BubbleGrid _bubbleGrid = new();
-
-    private void Start()
+    public BubbleGrid BubbleGrid => _bubbleGrid;
+    
+    private void Awake()
     {
         _bubbleGrid.SetSize(_maxRows, _columns);
         Build();
@@ -41,14 +42,9 @@ public class GridBuilder : MonoBehaviour
 
                 var startOffset = Vector3.zero;
 
-                if (row % 2 != 0)
+                if (GridHelper.IsOdd(row))
                 {
-                    // startOffset.x = halfBubbleWidth;
-                }
-
-                if (row != 0)
-                {
-                    // startOffset.y = bubbleSize.y * 0.125f * row;
+                    startOffset.x = halfBubbleWidth;
                 }
 
                 var position = startPosition + startOffset + new Vector3(bubbleSize.x * column, -bubbleSize.y * row, 0);

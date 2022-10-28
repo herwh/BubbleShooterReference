@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9b325b3d7d44a89ac1e392da08cb81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gridBuilder: {fileID: 1612683502}
   _spawnPosition: {fileID: 1929867763}
   _bubble: {fileID: 3606734657574507646, guid: 60dad16f1bc2b1a4cab258bce081a73f, type: 3}
   _bubbleData: {fileID: 11400000, guid: 1cfb50c95f39b24469ab1741f1cd6b66, type: 2}
