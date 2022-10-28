@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82903b41777a4259a71556f763e75414, type: 3}
+  m_Name: CustomGrid
+  m_EditorClassIdentifier: 
+  _colors: {fileID: 11400000, guid: 1cfb50c95f39b24469ab1741f1cd6b66, type: 2}
+  _bubbleDatas:
+  - _rowIndex: 0
+    _columnIndex: 1
+    _colorIndex: 0
+  - _rowIndex: 0
+    _columnIndex: 3
+    _colorIndex: 0
+  - _rowIndex: 0
+    _columnIndex: 4
+    _colorIndex: 1
+  - _rowIndex: 0
+    _columnIndex: 7
+    _colorIndex: 2
+  - _rowIndex: 1
+    _columnIndex: 2
+    _colorIndex: 1
+  - _rowIndex: 1
+    _columnIndex: 3
+    _colorIndex: 2
+  - _rowIndex: 1
+    _columnIndex: 5
+    _colorIndex: 2
+  - _rowIndex: 1
+    _columnIndex: 7
+    _colorIndex: 0
+  - _rowIndex: 1
+    _columnIndex: 11
+    _colorIndex: 0
+  - _rowIndex: 2
+    _columnIndex: 0
+    _colorIndex: 1
+  - _rowIndex: 2
+    _columnIndex: 2
+    _colorIndex: 1
+  - _rowIndex: 2
+    _columnIndex: 3
+    _colorIndex: 1
+  - _rowIndex: 2
+    _columnIndex: 4
+    _colorIndex: 2
+  - _rowIndex: 2
+    _columnIndex: 6
+    _colorIndex: 2
+  - _rowIndex: 2
+    _columnIndex: 10
+    _colorIndex: 1
+  - _rowIndex: 2
+    _columnIndex: 11
+    _colorIndex: 1
+  - _rowIndex: 3
+    _columnIndex: 2
+    _colorIndex: 2
+  - _rowIndex: 3
+    _columnIndex: 3
+    _colorIndex: 0
+  - _rowIndex: 3
+    _columnIndex: 7
+    _colorIndex: 2
+  - _rowIndex: 3
+    _columnIndex: 8
+    _colorIndex: 2
+  - _rowIndex: 3
+    _columnIndex: 9
+    _colorIndex: 1
+  - _rowIndex: 4
+    _columnIndex: 0
+    _colorIndex: 1
+  - _rowIndex: 4
+    _columnIndex: 1
+    _colorIndex: 2
+  - _rowIndex: 4
+    _columnIndex: 2
+    _colorIndex: 0
+  - _rowIndex: 4
+    _columnIndex: 3
+    _colorIndex: 2
+  - _rowIndex: 4
+    _columnIndex: 4
+    _colorIndex: 1
+  - _rowIndex: 4
+    _columnIndex: 7
+    _colorIndex: 0
+  - _rowIndex: 4
+    _columnIndex: 10
+    _colorIndex: 1
+  - _rowIndex: 4
+    _columnIndex: 11
+    _colorIndex: 2
+  - _rowIndex: 5
+    _columnIndex: 5
+    _colorIndex: 0

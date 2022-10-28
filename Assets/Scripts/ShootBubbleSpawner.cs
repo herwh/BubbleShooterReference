@@ -7,7 +7,7 @@ public class ShootBubbleSpawner : MonoBehaviour
     [SerializeField] private GridBuilder _gridBuilder;
     [SerializeField] private Transform _spawnPosition;
     [SerializeField] private Bubble _bubble;
-    [SerializeField] private BubbleData _bubbleData;
+    [SerializeField] private ColorsData _colorsData;
     [SerializeField] private float _spawnDelay;
 
     public bool HasBubble => _currentBubble != null;
@@ -31,7 +31,7 @@ public class ShootBubbleSpawner : MonoBehaviour
     {
         _currentBubble = Instantiate(_bubble, _spawnPosition.position, Quaternion.identity);
         _currentBubble.OnCollision += CurrentBubbleOnOnCollision;
-        _currentBubble.Color = _bubbleData.GetRandomColor();
+        _currentBubble.Color = _colorsData.GetRandomColor();
         _currentBubble.gameObject.layer = 7; // ShootBubble layer
         Rigidbody2D bubbleRigidbody = _currentBubble.gameObject.AddComponent<Rigidbody2D>();
         bubbleRigidbody.isKinematic = true;

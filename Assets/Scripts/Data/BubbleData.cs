@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "New Color Data", menuName = "Colors", order = 0)]
-    public class BubbleData : ScriptableObject
+    [Serializable]
+    public class BubbleData
     {
-        [SerializeField] private List<Color> _colors;
+        [SerializeField] private int _rowIndex;
+        [SerializeField] private int _columnIndex;
+        [SerializeField] private int _colorIndex;
 
-        public Color GetRandomColor()
-        {
-            var randomIndex = Random.Range(0, _colors.Count);
-            return _colors[randomIndex];
-        }
+        public int RowIndex => _rowIndex;
+        public int ColumnIndex => _columnIndex;
+        public int ColorIndex => _colorIndex;
+        
     }
 }

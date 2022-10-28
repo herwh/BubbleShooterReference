@@ -8,9 +8,9 @@ public class GridBuilder : MonoBehaviour
     [SerializeField] private int _columns;
     [SerializeField] private int _maxRows;
     [SerializeField] private int _bubbleSkipProbability;
-    [SerializeField] private BubbleData _bubbleData;
+    [SerializeField] private ColorsData _colorsData;
     [SerializeField] private int _bubbleClusterFactor;
-
+    [SerializeField] private CustomGridData _customData;
     public BubbleGrid BubbleGrid => _bubbleGrid;
 
     private float _halfBubbleWidth;
@@ -34,33 +34,56 @@ public class GridBuilder : MonoBehaviour
         startPosition.y -= halfBubbleHeight;
         startPosition.z = 0;
 
-        for (int row = 0; row < _rows; row++)
+        if (PlayerPrefs.GetInt("Mode")==(int)Mode.Random)
         {
-            for (int column = 0; column < _columns; column++)
+            for (int row = 0; row < _rows; row++)
             {
-                if (SkipBubble())
+                for (int column = 0; column < _columns; column++)
                 {
-                    continue;
+                    if (SkipBubble())
+                    {
+                        continue;
+                    }
+
+                    var startOffset = Vector3.zero;
+
+                    if (GridHelper.IsOdd(row))
+                    {
+                        startOffset.x = halfBubbleWidth;
+                    }
+
+                    var position = startPosition + startOffset + 
+                                   new Vector3(bubbleSize.x * column, -bubbleSize.y * row, 0);
+
+                    CreateBubble(position, column, row, _colorsData.GetRandomColor());
                 }
+            }
+        }
 
+        else
+        {
+            foreach (var bubbleData in _customData.BubbleDatas)
+            {
                 var startOffset = Vector3.zero;
-
-                if (GridHelper.IsOdd(row))
+                
+                if (GridHelper.IsOdd(bubbleData.RowIndex))
                 {
                     startOffset.x = halfBubbleWidth;
                 }
 
-                var position = startPosition + startOffset + new Vector3(bubbleSize.x * column, -bubbleSize.y * row, 0);
+                var position = startPosition + startOffset + 
+                               new Vector3(bubbleSize.x * bubbleData.ColumnIndex, -bubbleSize.y * bubbleData.RowIndex, 0);
 
-                CreateBubble(position, column, row);
+                CreateBubble(position, bubbleData.ColumnIndex, bubbleData.RowIndex, _colorsData.Colors[bubbleData.ColorIndex]);
             }
         }
     }
 
-    private void CreateBubble(Vector3 position, int column, int row)
+
+    private void CreateBubble(Vector3 position, int column, int row, Color color)
     {
         var newBubble = Instantiate(_bubble, position, Quaternion.identity);
-        newBubble.Color = _bubbleData.GetRandomColor();
+        newBubble.Color = color;
         _bubbleGrid.AddBubble(row, column, newBubble);
     }
 
