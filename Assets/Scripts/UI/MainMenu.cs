@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,8 +17,8 @@ namespace UI
             _startButton.onClick.AddListener(StartButtonClicked);
             _modeButton.onClick.AddListener(ModeButtonClicked);
             _exitButton.onClick.AddListener(ExitButtonClicked);
-            
-            _modeButtonText.text = $"Mode: {(Mode)GetCurrentMode()}";
+
+            _modeButtonText.text = $"Mode: {(Mode) GetCurrentMode()}";
         }
 
         private void StartButtonClicked()
@@ -33,7 +32,7 @@ namespace UI
             currentMode = (currentMode + 1) % 2;
             PlayerPrefs.SetInt("Mode", currentMode);
 
-            _modeButtonText.text = $"Mode: {(Mode)currentMode}";
+            _modeButtonText.text = $"Mode: {(Mode) currentMode}";
         }
 
         private int GetCurrentMode()

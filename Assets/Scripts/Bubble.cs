@@ -7,16 +7,16 @@ public class Bubble : MonoBehaviour
 
     public int Row { get; set; }
     public int Column { get; set; }
-    
+
     public Color Color
     {
         get => _spriteRenderer.color;
         set => _spriteRenderer.color = value;
     }
-    
+
     public Vector3 Direction { get; set; }
-    public event Action<Bubble,int, int, Color> OnCollision;
-        
+    public event Action<Bubble, int, int, Color> OnCollision;
+
     private bool _isMoving;
     private float _throwForce;
 

@@ -8,7 +8,6 @@ public static class GridHelper
     public static (int, int) GetBubbleIndex(Vector3 position, Vector3 size)
     {
         var distanceToScreenTop = ScreenSize.MaxPosition.y - position.y;
-
         var originalSize = size / ScreenSize.GetScreenCorrelation();
         var countRowsBefore = distanceToScreenTop / originalSize.y;
         var snapRowIndex = (int) countRowsBefore;

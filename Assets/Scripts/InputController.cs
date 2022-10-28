@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputController : MonoBehaviour
 {
@@ -8,16 +9,19 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            RotateArrow();
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (_shootBubbleSpawner.HasBubble)
+            if (Input.GetMouseButton(0))
             {
-                ThrowBubble(_shootBubbleSpawner.PopBubble());
+                RotateArrow();
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (_shootBubbleSpawner.HasBubble)
+                {
+                    ThrowBubble(_shootBubbleSpawner.PopBubble());
+                }
             }
         }
     }

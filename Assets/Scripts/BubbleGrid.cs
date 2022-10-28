@@ -31,11 +31,11 @@ public class BubbleGrid
 
     public void InsertBubble(Bubble bubble, int row, int column, Color color)
     {
-        AddBubble(row,column,bubble);
+        AddBubble(row, column, bubble);
         var visitedBubbles = new HashSet<Bubble>();
 
         ClusterSearch(visitedBubbles, bubble, row, column);
-        
+
         if (visitedBubbles.Count >= _clusterFactor)
         {
             foreach (var visitedBubble in visitedBubbles)
@@ -45,6 +45,7 @@ public class BubbleGrid
             }
         }
     }
+
     private List<Bubble> GetNeighbours(int row, int column)
     {
         var neighbours = new List<Bubble>();
@@ -70,7 +71,7 @@ public class BubbleGrid
 
         return neighbours;
     }
-    
+
     private void AddNotNullNeighbours(List<Bubble> neighbours, int row, int column)
     {
         if (row < 0 || row >= _rows || column < 0 || column >= _columns)
@@ -91,14 +92,14 @@ public class BubbleGrid
         var bubbleNeighbours = GetNeighbours(row, column);
         visitedBubbles.Add(bubble);
 
-        for (int i = 0; i < bubbleNeighbours.Count; i++)
+        foreach (var neighbourBubble in bubbleNeighbours)
         {
-            if (bubbleNeighbours[i].Color == bubble.Color && !visitedBubbles.Contains(bubbleNeighbours[i]))
+            if (neighbourBubble.Color == bubble.Color && !visitedBubbles.Contains(neighbourBubble))
             {
-                neighboursWithSameColor.Enqueue(bubbleNeighbours[i]);
+                neighboursWithSameColor.Enqueue(neighbourBubble);
             }
         }
-        
+
         while (neighboursWithSameColor.Count > 0)
         {
             var neighbour = neighboursWithSameColor.Dequeue();

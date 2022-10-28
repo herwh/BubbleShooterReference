@@ -11,7 +11,7 @@ public class ShootBubbleSpawner : MonoBehaviour
     [SerializeField] private float _spawnDelay;
 
     public bool HasBubble => _currentBubble != null;
-    
+
     private Bubble _currentBubble;
 
     public Bubble PopBubble()

@@ -13,6 +13,5 @@ namespace Data
         public int RowIndex => _rowIndex;
         public int ColumnIndex => _columnIndex;
         public int ColorIndex => _colorIndex;
-        
     }
 }
